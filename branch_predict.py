@@ -1,8 +1,5 @@
 import random
 
-
-num_branches = 1000 #must be at least 1
-
 def test_prediction(branch_distribution, predictor):
 	prediction_distribution = [] #distribution of predictions
 	num_taken = 0 #number of branches taken
@@ -34,7 +31,7 @@ def generate_branch(prev_branch):
 	else:
 		cur_branch = random.randint(0,1)
 
-def generate_distribution(dist):
+def generate_distribution(dist, num_branches):
 	value = float(random.randint(0,1000)) / float(1000)
 	for i in dist:
 		if (value <=)
