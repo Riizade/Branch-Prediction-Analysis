@@ -1,41 +1,51 @@
 import random
 
-def test_prediction(branch_distribution, predictor):
-	prediction_distribution = [] #distribution of predictions
-	num_taken = 0 #number of branches taken
+def test_prediction(br_dist, predictor):
+	# distribution of predictions
+	pred_dist = []
+	# number of branches taken
+	num_taken = 0
 
-	#for each branch in the distribution
-	for b in branch_distribution:
-		prediction_distribution.append(predictor.predict()) #predict the branch
-		predictor.update(b) #update the predictor with whether the branch was taken or not
-		#update num_taken
+	# for each branch in the distribution
+	for b in br_dist:
+		# predict the branch
+		pred_dist.append(predictor.predict())
+		# update the predictor with whether the branch was taken or not
+		predictor.update(b)
+		# update num_taken
 		if(b == 1):
 			num_taken += 1
 
-	#calculate % predictions correct
+	# calculate % predictions correct
 	num_correct = 0
-	for i in range(len(branch_distribution)):
-		if (branch_distribution[i] == prediction_distribution[i]):
+	for i in range(len(br_dist)):
+		if (br_dist[i] == pred_dist[i]):
 			num_correct += 1
 
+	# prints
+	# - the number of predictions tested
+	# - the percentage of those predictions that were correct
+	# - the number of branches taken in the distribution (and %)
+	# - the number of branches not taken (and %)
+	proportion_correct = (float(num_correct) / float(len(br_dist))) * 100
+	print(str(len(br_dist)) + " predictions were tested, " 
+			+ str(proportion_correct) + "% were correct.")
+	print("In this distribution, " + str(num_taken) + " branches were taken (" 
+			+ str(float(num_taken * 100) / float(num_branches)) + "%), " 
+			+ str(num_branches - num_taken) + " were not taken (" 
+			+ str(((num_branches - num_taken) * 100) / float(num_branches)) 
+			+ "%).")
 
-	proportion_correct = (float(num_correct) / float(len(branch_distribution))) * 100
-	print(str(len(branch_distribution)) + " predictions were tested, " + str(proportion_correct) + "% were correct.")
-	print("In this distribution, " + str(num_taken) + " branches were taken (" + str(float(num_taken * 100) / float(num_branches)) + "%), " + str(num_branches - num_taken) + " were not taken (" + str(float((num_branches - num_taken) * 100) / float(num_branches)) + "%).")
-
-def generate_branch(prev_branch):
-	cur_branch = 0
-
-	if(prev_branch == 1):
-
-	else:
-		cur_branch = random.randint(0,1)
-
-def generate_distribution(dist, num_branches):
-	value = float(random.randint(0,1000)) / float(1000)
+def generate_distribution(num_branches):
+	dist = []
+	value = random.randint(0,1000)
 	for i in dist:
-		if (value <=)
+		if (value <= 200):
+			dist.append(0)
+		elif (value <= 1000):
+			dist.append(1)
 
+	return dist
 
 class twobit_saturated_counter:
 	counter = 2
