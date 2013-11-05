@@ -2,32 +2,32 @@ import random
 
 
 def test_prediction(br_dist, predictor):
-	# distribution of predictions
+	# Distribution of predictions
 	pred_dist = []
-	# number of branches taken
+	# Number of branches taken
 	num_taken = 0
 
-	# for each branch in the distribution
+	# For each branch in the distribution
 	for b in br_dist:
-		# predict the branch
+		# Predict the branch
 		pred_dist.append(predictor.predict())
-		# update the predictor with whether the branch was taken or not
+		# Update the predictor with whether the branch was taken or not
 		predictor.update(b)
-		# update num_taken
+		# Update num_taken
 		if(b == 1):
 			num_taken += 1
 
-	# calculate % predictions correct
+	# Calculate % predictions correct
 	num_correct = 0
 	for i in range(len(br_dist)):
 		if (br_dist[i] == pred_dist[i]):
 			num_correct += 1
 
-	# prints
-	# - the number of predictions tested
-	# - the percentage of those predictions that were correct
-	# - the number of branches taken in the distribution (and %)
-	# - the number of branches not taken (and %)
+	# Prints
+	# - The number of predictions tested
+	# - The percentage of those predictions that were correct
+	# - The number of branches taken in the distribution (and %)
+	# - The number of branches not taken (and %)
 	proportion_correct = (float(num_correct) / float(len(br_dist))) * 100
 	print(str(len(br_dist)) + " predictions were tested, " 
 			+ str(proportion_correct) + "% were correct.")
