@@ -1,5 +1,6 @@
 import random
 
+
 def test_prediction(br_dist, predictor):
 	# distribution of predictions
 	pred_dist = []
@@ -36,6 +37,7 @@ def test_prediction(br_dist, predictor):
 			+ str(((num_branches - num_taken) * 100) / float(num_branches)) 
 			+ "%).")
 
+
 def generate_distribution(num_branches):
 	dist = []
 	value = random.randint(0,1000)
@@ -46,6 +48,7 @@ def generate_distribution(num_branches):
 			dist.append(1)
 
 	return dist
+
 
 class twobit_saturated_counter:
 	counter = 2
@@ -59,5 +62,3 @@ class twobit_saturated_counter:
 			counter += 1
 		if (taken == 0 and counter >0):
 			counter -= 1
-
-
